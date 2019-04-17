@@ -39,13 +39,13 @@
     <string>Start</string>
    </property>
   </widget>
-  <widget class="QOpenGLWidget" name="openGLWidget">
+  <widget class="QGraphicsView" name="graphicsView">
    <property name="geometry">
     <rect>
-     <x>29</x>
-     <y>89</y>
-     <width>481</width>
-     <height>301</height>
+     <x>10</x>
+     <y>20</y>
+     <width>501</width>
+     <height>471</height>
     </rect>
    </property>
   </widget>
