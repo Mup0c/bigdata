@@ -22,7 +22,7 @@ class Parser():
             self.block += self.file.read(BLOCK_SIZE)
         splitted = self.block.split(",", maxsplit=3);
         self.block = splitted[-1]
-        return rgb(*[int(re.findall(r'\b\d+\b', splitted[i])[0]) for i in range(3)])
+        return ([int(re.findall(r'\b\d+\b', splitted[i])[0]) for i in range(3)])
 
     def loop_file(self):
         self.file.seek(0)
