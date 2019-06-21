@@ -1,6 +1,5 @@
-import image_model
+import time
 from parser_json import Parser
-from image_model import *
 import threading
 from PyQt5.QtGui import * # QApplication
 from PyQt5 import QtCore, QtGui, QtWidgets
@@ -52,7 +51,7 @@ class AnimatorApp(QtWidgets.QMainWindow):
 
     def parsendraw(self):
         print("begin")
-
+        btime = time.time()
         frame = self.parser.parse()
         print("parsed")
         self.graphicsView.setGeometry(QtCore.QRect(0, 0, frame.w, frame.h))
@@ -66,8 +65,8 @@ class AnimatorApp(QtWidgets.QMainWindow):
                 y += 1
             else:
                 x += 1
-        print("drawn")
-        self.pixmap = QPixmap(self.image)
+        self.pixmap =  QPixmap(self.image)
+        print("drawn in %s seconds" % (time.time() - btime))
         threading.Timer(0.001, self.parsendraw).start()
 
     def paint(self, event):
@@ -76,8 +75,3 @@ class AnimatorApp(QtWidgets.QMainWindow):
             self.painter.drawPixmap(0, 0, self.pixmap)
         self.painter.end()
         self.update()
-
-
-            #self.current_pixmap = QPixmap(self.new_image)
-
-
